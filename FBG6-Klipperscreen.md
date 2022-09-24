@@ -1,4 +1,20 @@
-# Подключение MKS TS35 к RaspberryPi и запуск Klipperscreen
+# Flyingbear GHOST6 и Klipperscreen на оригинальном экране
+
+3D-принтер Flyingbear GHOST6 построен с использованием 3.5" TFT жк-дисплея с резистивным сенсором прикосновений MKS TS35-R V2.0.
+
+![mks ts35-r v2](images/ts35r.jpg) 
+
+В отличие от раннего собрата GHOST5, в данном принтере дисплей подключается к основной плате двумя десятиконтактными шлейфами с разъёмами типа IDC.
+Используется распространённая среди 3D-принтеров цоколёвка EXP1-EXP2, известная с RepRapDiscount GLCD 128*64 и символьных ЖКИ
+
+TFT-дисплей в интерьере
+
+![fbg6 interior](images/ts35r-back.jpg)
+
+
+
+
+## Подключение MKS TS35 к RaspberryPi и запуск Klipperscreen
 
 
 Основной процесс подключения Klipperscreen на RaspberryPi был расписан здесь 
@@ -11,7 +27,7 @@ https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_a
 
 *Убедитесь, что установлены klipper, moonraker, fluidd/mainsail и klipperscreen*
 
-## 1. Электрическое подключение.
+### 1. Электрическое подключение.
 
 **ВНИМАНИЕ!** Нумерация контактов в разъёмах IDC-10M, распаянных на плате, НЕ СОВПАДАЕТ с традиционной, принятой для шлейфов 
 и определяемой ключом на ответной части IDC10-F.
@@ -20,8 +36,10 @@ https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_a
 Сверяйте с иллюстрацией, и дважды перепроверяйте по шинам питания, особенно, если не используете готовые наборы DUPONT, 
 а делаете самодельный кабель IDC-10x2->BLD40.
 
-Таблица соединений
+Расположение подключаемых пинов
+![pinout](images/mks_ts35_pinout_klipperscreen.png)
 
+Таблица соединений
 | EXP1 | цепь      | GPIO   | RPI |
 |:----:|-----------|--------|:---:|
 | 1    | BEEP      | nc     | nc  |
@@ -50,7 +68,7 @@ https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_a
 | 10   | BOARD_3.3 | nc     | nc  |
 
 
-## 2. Правка /boot/config.txt
+### 2. Правка /boot/config.txt
 
 ```console
 $ sudoedit /boot/config.txt
@@ -92,14 +110,14 @@ dtoverlay=tinylcd35,rotate=0,speed=36000000,touch,touchgpio=23,fps=10
 ```
 Образец [config.txt](boot/config.txt)
 
-## 3. Замена оверлея tinylcd35
+### 3. Замена оверлея tinylcd35
 ~~Взять оверлей здесь: https://drive.google.com/file/d/1BjEr-IkiOSmBhzX91KLA9PSWtEvyiL5W/view?usp=sharing
 $ sudo cp tinylcd25.dtbo.2 /boot/overlays/tinylcd35.dtbo~~
 
 Информация устарела, на форуме RaspberryPi упоминается, что с октября 2020г правильный оверлей уже включён в состав свежих образов.
 
 
-## 4. Установка fbcp
+### 4. Установка fbcp
 
 ```console
 $ sudo apt-get install cmake
@@ -116,7 +134,7 @@ $ cd ../..
 
 // вряд-ли для ВСЕХ команд сборки необходимы root-права, надо проверить, хватит ли первого и последнего sudo
 
-## 5. добавка fbcp в автозапуск
+### 5. добавка fbcp в автозапуск
 
 создать юнит для fbcp
 
@@ -146,23 +164,24 @@ WantedBy=multi-user.target
 $ sudo systemctl enable fbcp.service
 ```
 
-## 6. Установка поддержки сенсорного ввода 
+### 6. Установка поддержки сенсорного ввода 
 
 ```console
 $ sudo apt-get install xserver-xorg-input-evdev
 ```
 
-## 7. Перезагрузить RaspberryPi
+### 7. Перезагрузить RaspberryPi
 
 ```console
 $ sudo reboot
 ```
 
 После перезагрузки должен отобразиться KlipperScreen
+![klipperscreen](images/klipperscreen.jpg)
 
-Если на данном этапе вы видите консоль с приглашением залогиниться - поздравляю, вы, как и я, забыли установить klipperscreen (а заодно и не подтянулся X-сервер)
+Если на данном этапе вы видите [консоль с приглашением залогиниться](images/console.jpg) - поздравляю, вы, как и я, забыли установить klipperscreen (а заодно и не подтянулся X-сервер)
 Запускаем KIAUH и... (инструкция по KIAUH выходит за рамки данного руководства)
 
-## 8. Калибровка сенсорного экрана. 
+### 8. Калибровка сенсорного экрана. 
 Я обошёлся без неё, этот раздел будет дополнен позже, по мере накопления информации.
 
