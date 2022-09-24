@@ -90,7 +90,7 @@ display_rotate=0x10002
 dtparam=spi=on
 dtoverlay=tinylcd35,rotate=0,speed=36000000,touch,touchgpio=23,fps=10 
 ```
-Образец config.txt доступен по ссылке <>
+Образец [config.txt](boot/config.txt)
 
 ## 3. Замена оверлея tinylcd35
 ~~Взять оверлей здесь: https://drive.google.com/file/d/1BjEr-IkiOSmBhzX91KLA9PSWtEvyiL5W/view?usp=sharing
