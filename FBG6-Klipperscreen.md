@@ -16,6 +16,7 @@ TFT-дисплей в интерьере
 
 ## Подключение MKS TS35 к RaspberryPi и запуск Klipperscreen
 
+На момент написания руководства наиболее популярным SBC для установки Klipper на Flyingbeag GHOST6 является одноплатный компьютер *Orangepi 3 LTS*, ввиду спекулятивно высоких цен на RPI. Однако, при наличии в запасах RaspberryPi (а также RaspiCam), использование данного одноплатника по-прежнему актуально.
 
 Основной процесс подключения Klipperscreen на RaspberryPi был расписан здесь 
 https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_archived.md
@@ -66,6 +67,9 @@ https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_a
 | 8    | RESET     | nc     | nc  |
 | 9    | GND       | GND    | 20  |
 | 10   | BOARD_3.3 | nc     | nc  |
+
+
+Выводы *GPIO14* и *GPIO15* сохранены незадействованными для подключения через UART1 управляющей платы (Klipper-MCU) 
 
 
 ### 2. Правка /boot/config.txt
