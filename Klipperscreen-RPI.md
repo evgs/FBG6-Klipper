@@ -52,7 +52,7 @@ https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_a
 | 7    | LCD_CS    | GPIO8  | 24  |
 | 8    | LCD_RS    | GPIO24 | 18  |
 | 9    | GND       | GND    | 14  |
-| 10   | BOARD_5V  | 5V     | 3   |
+| 10   | BOARD_5V  | 5V     | 4   |
 
 
 | EXP2 | цепь      | GPIO   | RPI |
@@ -65,7 +65,7 @@ https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_a
 | 6    | MOSI      | GPIO10 | 19  |
 | 7    | nc        | nc     | nc  |
 | 8    | RESET     | nc     | nc  |
-| 9    | GND       | GND    | 20  |
+| 9    | GND       | GND    | 25  |
 | 10   | BOARD_3.3 | nc     | nc  |
 
 
