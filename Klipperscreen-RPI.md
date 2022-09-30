@@ -198,7 +198,7 @@ $ sudo reboot
 
 ### 8. Установка утилиты калибровки 
 ```console 
-sudo apt install xinput-calibrator
+$ sudo apt install xinput-calibrator
 ```
 
 ### 9. Выполнение калибровки
