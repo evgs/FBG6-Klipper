@@ -124,7 +124,7 @@ $ sudo cp tinylcd25.dtbo.2 /boot/overlays/tinylcd35.dtbo~~
 ### 4. Установка fbcp
 
 ```console
-$ sudo apt-get install cmake
+$ sudo apt-get install cmake xserver-xorg-input-evdev  xserver-xorg-video-fbdev
 $ cd ~
 $ sudo git clone https://github.com/tasanakorn/rpi-fbcp
 $ cd rpi-fbcp/
@@ -134,6 +134,7 @@ $ sudo cmake ..
 $ sudo make
 $ sudo install fbcp /usr/local/bin/fbcp
 $ cd ../..
+
 ```
 
 // вряд-ли для ВСЕХ команд сборки необходимы root-права, надо проверить, хватит ли первого и последнего sudo
@@ -176,6 +177,9 @@ $ sudo apt-get install xserver-xorg-input-evdev
 
 ### 7. Перезагрузить RaspberryPi
 
+**ВНИМАНИЕ** Все дальнейшие действия предполагают, что к одноплатнику НЕ ПОДКЛЮЧЕНЫ HDMI-монитор, клавиатура и мышь. Выполняйте все действия через ssh-соединение.
+<!-- Пользователи windows наверняка к моменту подключения klipperscreen уже познакомились с PuTTY, линуксоиды без меня знают и про ssh, и про иксы, и про DISPLAY=:0 :) -->
+
 ```console
 $ sudo reboot
 ```
@@ -184,8 +188,68 @@ $ sudo reboot
 ![klipperscreen](images/klipperscreen.jpg)
 
 Если на данном этапе вы видите [консоль с приглашением залогиниться](images/console.jpg) - поздравляю, вы, как и я, забыли установить klipperscreen (а заодно и не подтянулся X-сервер)
-Запускаем KIAUH и... (инструкция по KIAUH выходит за рамки данного руководства)
+Запускаем KIAUH и доустанавливаем. (инструкция по KIAUH выходит за рамки данного руководства)
 
-### 8. Калибровка сенсорного экрана. 
-Я обошёлся без неё, этот раздел будет дополнен позже, по мере накопления информации.
+## Калибровка сенсорного экрана
+Базовая (без выполнения калибровки) точность определения координат резистивного экрана, по субъективным оценкам, около 5%.
+Это означает, что большие контролы клипперскрина можно нажимать без риска ложных срабатываний, но работа с экранной клавиатурой будет вызвыать сложности.
+Улучшить соответствие экранных координат и координат сенсора можно при помощи калибровки.
+
+
+### 8. Установка утилиты калибровки 
+```console 
+sudo apt install xinput-calibrator
+```
+
+### 9. Выполнение калибровки
+
+Узнаём id устройства ввода, в нашем примере получили id=6:
+```console 
+$ DISPLAY=:0 xinput_calibrator --list
+
+Device "ADS7846 Touchscreen" id=6
+```
+
+Вызываем утилиту калибровки, указав ранее полученный id
+```console
+DISPLAY=:0 xinput_calibrator -v --device 6
+```
+
+[место для картинки]
+Поочерёдно стилусом касаемся 4х указанных точек, после чего получаем вот такой результат:
+
+```console
+DEBUG: XInputExtension version is 2.3
+DEBUG: Skipping virtual master devices and devices without axis valuators.
+DEBUG: Selected device: ADS7846 Touchscreen
+...
+DEBUG: Successfully applied axis calibration.
+        --> Making the calibration permanent <--
+DEBUG: Found that 'ADS7846 Touchscreen' is a sysfs name.
+  copy the snippet below into '/etc/X11/xorg.conf.d/99-calibration.conf' (/usr/share/X11/xorg.conf.d/ in some distro's)
+Section "InputClass"
+        Identifier      "calibration"
+        MatchProduct    "ADS7846 Touchscreen"
+        Option  "Calibration"   "165 3859 157 3848"
+        Option  "SwapAxes"      "0"
+EndSection
+```
+
+Забираем в буфер обмена предложенный сниппет - строки Section "InputClass" ... EndSection включительно.
+
+### 10. Сохранение результата калибровки
+```console
+$ sudo mkdir -p /etc/X11/xorg.conf.d/
+$ sudoedit /etc/X11/xorg.conf.d/99-calibration.conf
+```
+
+В открывшийся текстовый редактор вставляем строки из буфера обмена:
+```console
+Section "InputClass"
+        Identifier      "calibration"
+        MatchProduct    "ADS7846 Touchscreen"
+        Option  "Calibration"   "165 3859 157 3848"
+        Option  "SwapAxes"      "0"
+EndSection
+```
 
