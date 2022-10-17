@@ -80,9 +80,9 @@ $ sudoedit /boot/config.txt
 
 Убедитесь, что включён оверлей spi:
 
-'''
+```
 dtparam=spi=on
-'''
+```
 
 Вышеупомянутое руководство упоминает файл https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/config.txt как образец.
 В файле есть ошибки, игнорируйте все строки, начиная с 72:
