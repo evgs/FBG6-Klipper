@@ -108,7 +108,6 @@ hdmi_group=2
 hdmi_mode=87
 display_rotate=0x10002
 
-# MKS TS35 Rotated 270 (for fit on Two Trees Bluer)
 dtparam=spi=on
 dtoverlay=tinylcd35,rotate=0,speed=36000000,touch,touchgpio=23,fps=10 
 ```
