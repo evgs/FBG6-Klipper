@@ -2,6 +2,7 @@
 
 ## Прошивки Klipper для MKS Robin Nano V3, Nano4 (FBG6), Nano6(Reborn)
 Прошивки скомпилированы под соответствующие интерфейсы связи:
+
 [USB (PA11/PA12)](
 https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usb/firmware.bin) - разъём USB-B на лицевой панели принтера
 
