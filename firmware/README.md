@@ -2,12 +2,15 @@
 
 ## Прошивки Klipper для MKS Robin Nano V3, Nano4 (FBG6), Nano6(Reborn)
 Прошивки скомпилированы под соответствующие интерфейсы связи:
+https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usb/firmware.bin
+[USB (PA11/PA12)](
+https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usb/firmware.bin) - разъём USB-B на лицевой панели принтера
 
-[USB (PA11/PA12)](klipper-v0.11.0-198/mks-robin-nano-v3-usb/firmware.bin) - разъём USB-B на лицевой панели принтера
+[USART1 (PA10/PA9)](
+https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usart1/firmware.bin) - контакты RX1/TX1 на панельке модуля WiFi (сам модуль извлечь)
 
-[USART1 (PA10/PA9)](klipper-v0.11.0-198/mks-robin-nano-v3-usart1/firmware.bin) - контакты RX1/TX1 на панельке модуля WiFi (сам модуль извлечь)
-
-[USART3 (PB11/PB10)](klipper-v0.11.0-198/mks-robin-nano-v3-usart1/firmware.bin) - контакты RX3/TX3 рядом с панелькой модуля WiFi
+[USART3 (PB11/PB10)](
+https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usart1/firmware.bin) - контакты RX3/TX3 рядом с панелькой модуля WiFi
 
 
 Скачать файл _firmware.bin_, записать на карту microSD (формат FAT32), установить карту в принтер, перезагрузить. Подождать пару минут, выключить принтер, извлечь карту.
@@ -16,7 +19,8 @@
 
 ## Оригинальный загрузчик MKS Robin Nano4
 
-[Загрузчик](bldr_mksnano4v3.1.bin) считан с платы принтера первой ревизии, выпуск - лето 2022г. От загрузчика MKS Robin Nano V3.1 отличается именем ожидаемого файла прошивки - ROBIN_NANO_4.BIN, либо FIRMWARE.BIN
+[Загрузчик](
+https://github.com/evgs/FBG6-Klipper/raw/main/firmware/bldr_mksnano4v3.1.bin) считан с платы принтера первой ревизии, выпуск - лето 2022г. От загрузчика MKS Robin Nano V3.1 отличается именем ожидаемого файла прошивки - ROBIN_NANO_4.BIN, либо FIRMWARE.BIN
 
 Для записи загрузчика в чистый процессор без программатора можно задействовать режим DFU:
 1. Замкнуть перемычку BOOT на плате
