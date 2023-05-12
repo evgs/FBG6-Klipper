@@ -13,14 +13,14 @@ https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-r
 https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usart1/firmware.bin) - контакты RX3/TX3 рядом с панелькой модуля WiFi
 
 
-Скачать файл _firmware.bin_, записать на карту microSD (формат FAT32), установить карту в принтер, перезагрузить. Подождать пару минут, выключить принтер, извлечь карту.
+Скачать файл `firmware.bin`, записать на карту microSD (формат FAT32), установить карту в принтер, перезагрузить. Подождать пару минут, выключить принтер, извлечь карту.
 
-В случае успешной прошивки файл будет переименован FIRMWARE.CUR
+В случае успешной прошивки файл будет переименован `FIRMWARE.CUR`
 
 ## Оригинальный загрузчик MKS Robin Nano4
 
 [Загрузчик](
-https://github.com/evgs/FBG6-Klipper/raw/main/firmware/bldr_mksnano4v3.1.bin) считан с платы принтера первой ревизии, выпуск - лето 2022г. От загрузчика MKS Robin Nano V3.1 отличается именем ожидаемого файла прошивки - ROBIN_NANO_4.BIN, либо FIRMWARE.BIN
+https://github.com/evgs/FBG6-Klipper/raw/main/firmware/bldr_mksnano4v3.1.bin) считан с платы принтера первой ревизии, выпуск - лето 2022г. От загрузчика MKS Robin Nano V3.1 отличается именем ожидаемого файла прошивки - `ROBIN_NANO_4.BIN`, либо `FIRMWARE.BIN`
 
 Для записи загрузчика в чистый процессор без программатора можно задействовать режим DFU:
 1. Замкнуть перемычку BOOT на плате
