@@ -26,6 +26,6 @@ https://github.com/evgs/FBG6-Klipper/raw/main/firmware/bldr_mksnano4v3.1.bin) с
 1. Замкнуть перемычку BOOT на плате
 2. Замкнуть перемычку USB_PWR для питания платы от USB
 3. Подключить плату к компьютеру кабелем USB
-4. воспользоваться программами STM32CubeProg (Windows), либо dfu-util (Linux, MAC)
+4. воспользоваться программами STM32CubeProg (Windows), либо [dfu-util](https://manpages.ubuntu.com/manpages/trusty/man1/dfu-util.1.html) (Linux, MAC)
 
 Кстати, dfu-util автоматически устанавливается в составе Klipper
