@@ -71,6 +71,8 @@ https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/mks_ts35_guide_a
 
 Выводы *GPIO14* и *GPIO15* сохранены незадействованными для подключения через UART1 управляющей платы (Klipper-MCU) 
 
+EXP2_10 (BOARD_3.3) на плате дисплея не подсоединён, дисплей использует собственный стабилизатор 3.3В
+
 
 ### 2. Правка /boot/config.txt
 
