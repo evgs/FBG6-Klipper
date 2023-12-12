@@ -10,7 +10,7 @@ https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-r
 https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usart1/firmware.bin) - контакты RX1/TX1 на панельке модуля WiFi (сам модуль извлечь)
 
 [USART3 (PB11/PB10)](
-https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usart1/firmware.bin) - контакты RX3/TX3 рядом с панелькой модуля WiFi
+https://github.com/evgs/FBG6-Klipper/raw/main/firmware/klipper-v0.11.0-198/mks-robin-nano-v3-usart3/firmware.bin) - контакты RX3/TX3 рядом с панелькой модуля WiFi
 
 
 Скачать файл `firmware.bin`, записать на карту microSD (формат FAT32), установить карту в принтер, перезагрузить. Подождать пару минут, выключить принтер, извлечь карту.
