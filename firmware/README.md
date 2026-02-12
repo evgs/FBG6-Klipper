@@ -28,4 +28,11 @@ https://github.com/evgs/FBG6-Klipper/raw/main/firmware/bldr_mksnano4v3.1.bin) с
 3. Подключить плату к компьютеру кабелем USB
 4. воспользоваться программами STM32CubeProg (Windows), либо [dfu-util](https://manpages.ubuntu.com/manpages/trusty/man1/dfu-util.1.html) (Linux, MAC)
 
+### Пример прошивки бутлоадера утилитой dfu-util
+```
+cd /tmp
+wget https://github.com/evgs/FBG6-Klipper/raw/main/firmware/bldr_mksnano4v3.1.bin
+dfu-util -d 0483:df11 -a 0 -D bldr_mksnano4v3.1.bin -s 0x08000000:leave
+```
+
 Кстати, dfu-util автоматически устанавливается в составе Klipper
